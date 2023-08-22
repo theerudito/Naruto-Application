@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "383lFT5h+HZwCp3jwsPGiXMBMbIqkeoLHtvx8BkcTVA=",
+  "Hash": "hMdwWH/pObfI7rh1Yqc0xT74oYUoACv9Yqt2dn+0EWo=",
   "Source": "Naruto.Backend",
   "BasePath": "_content/Naruto.Backend",
   "Mode": "Default",
@@ -697,6 +697,23 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Identity": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "Naruto.Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\",
+      "BasePath": "_content/Naruto.Backend",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
+    },
+    {
       "Identity": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "Naruto.Backend",
       "SourceType": "Discovered",
@@ -797,23 +814,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
-    },
-    {
-      "Identity": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
-      "SourceId": "Naruto.Backend",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\",
-      "BasePath": "_content/Naruto.Backend",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
