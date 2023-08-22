@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Naruto.Data\Naruto.Data.csproj" />
+    <ProjectReference Include="..\Naruto.Helpers\Naruto.Helpers.csproj" />
+    <ProjectReference Include="..\Naruto.Models\Naruto.Models.csproj" />
+  </ItemGroup>
+
+</Project>

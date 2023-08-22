@@ -1,0 +1,43 @@
+﻿@inherits LayoutComponentBase
+@using Naruto.Backend.Pages
+
+
+<PageTitle>Naruto</PageTitle>
+
+<div > 
+     @if (login)
+    {
+        <main>
+         <NavMenu />
+            @Body
+            <Footer/> 
+        </main>
+    } else
+    {
+        <main>
+            <AuthView />
+        </main>
+       
+    }
+</div>
+
+@code 
+{
+    public bool login = false;
+    [Inject]
+    private LocalStorageData LocalStorageData { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var token = await LocalStorageData.GetLocalStorage();
+        if (token == null)
+        {
+            login = false;
+            
+        } else
+        {
+            login = true;
+        }
+    }
+}

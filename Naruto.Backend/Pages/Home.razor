@@ -1,0 +1,71 @@
+﻿@page "/home"
+
+
+@inject ICharacter Characters;
+
+
+<div class="d-flex">
+    <h3 class="m-auto">@title</h3>
+</div>
+
+
+
+<div class="input-group mb-3 p-3">
+    <input 
+        type="text"
+        @oninput="SeachCharacter"
+        class="form-control w-50"
+        placeholder="Search Character" 
+        aria-label="Search Character" 
+        aria-describedby="button-addon2">
+</div>
+
+@if (characters != null)
+{
+    <div class="container">
+       
+            @foreach (var item in characters)
+            {
+                    <div class="card w-100">
+                        <div class="d-flex justify-content-center align-items-center p-2">
+                            <img src="@item.Image" class="image" alt="picture">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Name: @item.FirstName</h5>
+                            <p class="card-text m-0">Clan: @item.NameClan</p>
+                            <p class="card-text m-0">Age: @item.Age</p>
+                            <p class="card-text m-0">Jutsu: Rasengan</p>
+                            <p class="card-text m-0">Aldea: Aldea</p>
+                            <p class="card-text m-0">Occupation: Aldea</p>
+                            <p class="card-text m-0">Status: Vivo</p>
+                        </div>
+                    </div>
+            }
+    </div>
+
+} else 
+{
+    <div class="container">
+        <p>There are no characters</p>
+    </div>
+   
+}
+
+@code {
+    string title = "Home";
+
+    List<CharacterDTO>? characters = null;
+    CharacterDTO character = new CharacterDTO();
+
+
+    protected override async Task OnInitializedAsync()
+    { 
+        characters = await Characters._GETS();
+    }
+
+    private async void SeachCharacter(ChangeEventArgs e)
+    {
+        characters = await Characters._SEACHING(e.Value.ToString());
+        StateHasChanged();
+    }
+}

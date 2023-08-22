@@ -1,0 +1,85 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Naruto.Backend.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Naruto.Backend.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\Assets\\Clan_Uzumaki.webp",
+      "PackagePath": "staticwebassets\\Assets\\Clan_Uzumaki.webp"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\Assets\\Naruto_logo.png",
+      "PackagePath": "staticwebassets\\Assets\\Naruto_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\README.md",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Backend\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Naruto.Backend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.Naruto.Backend.props",
+      "PackagePath": "build\\Naruto.Backend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Naruto.Backend.props",
+      "PackagePath": "buildMultiTargeting\\Naruto.Backend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.Naruto.Backend.props",
+      "PackagePath": "buildTransitive\\Naruto.Backend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

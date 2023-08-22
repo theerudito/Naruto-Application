@@ -1,0 +1,15 @@
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\Naruto.Helpers.deps.json
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\Naruto.Helpers.dll
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\Naruto.Helpers.pdb
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\Naruto.Models.dll
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\Naruto.Models.pdb
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.csproj.AssemblyReference.cache
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.AssemblyInfoInputs.cache
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.AssemblyInfo.cs
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.csproj.CopyComplete
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.dll
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\refint\Naruto.Helpers.dll
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.pdb
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\ref\Naruto.Helpers.dll

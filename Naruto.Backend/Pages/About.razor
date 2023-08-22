@@ -1,0 +1,66 @@
+﻿@page "/about"
+
+@inject NavigationManager NavigationManager;
+@inject LocalStorageData LocalStorageData;
+
+<div class="d-flex">
+    <h3 class="m-auto">@title</h3>
+</div>
+
+<div class="form-control mb-2 w-75 m-auto justify-content-center">
+
+    <ul style="list-style: none" class="m-auto justify-content-center d-grid p-4">
+        <li><i class="bi bi-check2-circle text-info"></i> Tecnhologies Applicated</li>
+        <li><i class="bi bi-check2-circle text-info"></i> Sqlite</li>
+        <li><i class="bi bi-check2-circle text-info"></i> Entity Framework</li>
+        <li><i class="bi bi-check2-circle text-info"></i> Cloudinary</li>
+        <li><i class="bi bi-check2-circle text-info"></i> Blazor Server</li>
+        <li><i class="bi bi-check2-circle text-info"></i> AutoMapper</li>
+        <li><i class="bi bi-check2-circle text-info"></i> Bootstrap</li>
+        <li><i class="bi bi-check2-circle text-info"></i> Blazored</li>
+        <li><i class="bi bi-check2-circle text-info"></i> CSS</li>
+    </ul>
+
+</div>
+
+<div class="form-control mb-2 w-75 m-auto justify-content-center d-flex">
+    <a 
+        href="https://www.instagram.com/theerudito/" 
+        target="_blank">
+        <i class="bi bi-instagram m-5 fs-5" style="color: orangered"></i>
+    </a>
+    <a 
+        href="mailto:erudito.tv@gmail.com" 
+        target="_blank">
+        <i class="bi bi-envelope-at m-5 fs-5" style="color: purple"></i>
+    </a>
+    <a 
+        href="https://github.com/theerudito?tab=repositories" 
+        target="_blank">
+        <i class="bi bi-github m-5 fs-5" style="color: midnightblue"></i>
+    </a>
+    <a 
+        href="https://byerudito.web.app/" 
+        target="_blank">
+        <i class="bi bi-browser-chrome m-5 fs-5" style="color: aqua"></i>
+    </a>
+</div>
+
+<div class="d-flex m-5">
+    <button 
+        class="btn btn-danger m-auto" 
+        @onclick="() => LogOut()">
+        <i class="bi bi-box-arrow-left"> LOGOUT</i></button>
+</div>
+
+
+@code {
+    string title = "About";
+
+    private async Task LogOut()
+    {
+        await LocalStorageData.RemoveLocalStorage();
+
+        NavigationManager.NavigateTo("/");
+    }
+}

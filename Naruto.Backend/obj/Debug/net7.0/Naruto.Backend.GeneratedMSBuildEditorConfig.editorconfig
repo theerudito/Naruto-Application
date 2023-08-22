@@ -1,0 +1,73 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Naruto.Backend
+build_property.RootNamespace = Naruto.Backend
+build_property.ProjectDir = C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/About.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/Add_Character.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkX0NoYXJhY3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/Add_Clan.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkX0NsYW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/AuthView.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFZpZXcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Shared/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEZvb3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-cwsm3az3mj
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/Maintainer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpbnRhaW5lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-9h3j9v5ld2
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ewine/source/repos/Blazor/Naruto/Naruto.Backend/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

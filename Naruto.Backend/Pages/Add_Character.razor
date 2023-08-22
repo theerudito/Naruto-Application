@@ -1,0 +1,279 @@
+﻿@page "/addCharacter"
+@page "/addCharacter/{IdCharacter:int}" 
+
+ 
+@inject ICharacter Characters;
+@inject IClan Clans;
+@inject NavigationManager NavigationManager;
+@inject Cloudinary_Manager CloudinaryManager;
+@inject SweetAlertService Swal;
+
+<div class="d-flex">
+    <h3 class="m-auto">@title</h3>
+</div>
+
+
+<div class="d-flex">
+   
+        <EditForm 
+            Model="characters"
+              class="form-control m-2"  >
+              <DataAnnotationsValidator></DataAnnotationsValidator>
+            <div>
+                <label>First Name</label>
+                <InputText 
+                    @bind-Value="characters.FirstName" 
+                    class="form-control mb-3" 
+                    placeholder="First Name" />
+                <ValidationMessage For="@(() => characters.FirstName)"/>
+            </div>
+            <div class="mb-3">
+                <label>Clan</label>
+                <InputSelect class="form-select"
+                             @bind-Value="characters.IdClan">
+                    <option>-- SELECT A CLAN --</option>
+
+                    @foreach (var item in listClan)
+                    {
+                    <option value="@item.IdClan"> @item.ClanName</option>
+                    }
+                </InputSelect>
+            </div>
+            <div>
+                <label>Age</label>
+                <InputNumber 
+                    @bind-Value="characters.Age"  
+                    class="form-control mb-3" 
+                    placeholder="Age" />
+            </div>
+
+        <label>Image</label>
+        <InputFile 
+            class="form-control mb-3" 
+            accept="image/png, image/jpeg, image/webp" 
+            OnChange="LoadImage" />
+
+        <div class="form-control">
+            <button OnInvalidSubmit="SubmitData"
+                type="button"
+                class="btn btn-primary mb-1" 
+                style="font-size: 12px"
+                @onclick="() => SubmitData()">
+                @btntitle
+            </button>
+            <button 
+                    type="reset"
+                class="btn btn-secondary mb-1" 
+                style="font-size: 12px" 
+                @onclick="() => ResetFields()">
+                CANCEL
+            </button>
+        </div>
+
+        </EditForm>
+ 
+    <div class="form-control d-flex m-2">
+        <img 
+            src="@imagePreview" 
+            alt="logo" 
+            class="m-auto" 
+            style="width : 200px; height: 200px; object-fit: fill" />
+    </div>  
+</div>
+
+@code {
+    [Parameter]
+    public int IdCharacter { get; set; } = 0;
+
+    static string url = "Assets/Naruto_logo.png";
+
+    public string imagePreview = url;
+
+    public string _folder = "character";
+
+    public bool _selectedImage;
+
+    public string _urlImage = null!;
+
+    public string _refImage = null!;
+
+    public string nameImage = Guid.NewGuid().ToString();
+
+    List<ClanDTO> listClan = new List<ClanDTO>();
+
+    CharacterDTO characters = new CharacterDTO();
+
+    string btntitle = "";
+
+    string title = "Add Character";
+
+    protected override async Task OnInitializedAsync()
+    { 
+        if (IdCharacter == 0)
+        {
+            btntitle = "ADD CHARACTER";
+            title = "Add Character";
+            listClan = await Clans._GETS();
+
+        }
+        else
+        {
+            btntitle = "EDIT CHARACTER";
+            title = "Edit Character";
+            listClan = await Clans._GETS();
+            await GetOneCharacter();
+        }    
+    }
+
+    private async Task GetOneCharacter()
+    {
+        characters = await Characters._GET(IdCharacter);
+        imagePreview = characters.Image;
+        _refImage = characters.RefImage;
+        characters.IdClan = characters.IdClan;
+    }
+
+    private async Task SubmitData()
+    {
+        if (IdCharacter == 0)
+        {
+            if (ValiDationsFields() == true && _selectedImage == true)
+            {
+                await UpLoadImage();
+
+                var newChatacter = new CharacterDTO
+                    {
+                        FirstName = characters.FirstName,
+                        IdClan = characters.IdClan,
+                        Age = characters.Age,
+                        Image = _urlImage,
+                        RefImage = nameImage
+                    };
+
+                var result = await Characters._POST(newChatacter);
+                ResetFields();
+                StateHasChanged();
+            } else
+            {
+                await Swal.FireAsync("Error", "Please fill in all the fields and Image", SweetAlertIcon.Error);
+            }
+        }
+        else
+        {
+            if (_selectedImage == true)
+            {
+                if (ValiDationsFields() == true)
+                {
+                    await UpLoadImage();
+
+                    await DeleteImageCloud(_refImage);
+
+                    var newChatacter = new CharacterDTO
+                        {
+                            FirstName = characters.FirstName,
+                            IdClan = characters.IdClan,
+                            Age = characters.Age,
+                            Image = _urlImage,
+                            RefImage = nameImage
+                        };
+
+                    var result = await Characters._PUT(newChatacter, IdCharacter);
+
+                    if (result == true)
+                    {
+                        ResetFields();
+                        StateHasChanged();
+                    }
+                    else
+                    {   
+                        await Swal.FireAsync("Error", "Please fill in all the fields", SweetAlertIcon.Error);
+                    }
+                }
+
+            } else
+            {
+                if (ValiDationsFields() == true)
+                {
+                    var newChatacter = new CharacterDTO
+                        {
+                            FirstName = characters.FirstName,
+                            IdClan = characters.IdClan,
+                            Age = characters.Age,
+                            Image = characters.Image,
+                            RefImage = characters.RefImage
+                        };
+                    var result = await Characters._PUT(newChatacter, IdCharacter);
+                    if (result == true)
+                    {
+                        ResetFields();
+                        StateHasChanged();
+                    }   
+                } else
+                {
+                    await Swal.FireAsync("Error", "Please fill in all the fields", SweetAlertIcon.Error);  
+                }
+            }
+        }
+    }
+
+
+
+    private async Task LoadImage(InputFileChangeEventArgs e)
+    {
+        _selectedImage = true;
+
+        var view = await CloudinaryManager.SelectImage(e);
+
+        if (view != null)
+        {
+            imagePreview = view;
+        } else
+        {
+            imagePreview = url;
+        }
+
+    }
+
+    private async Task UpLoadImage()
+    {
+        var result = await CloudinaryManager.UploadImage(_folder, nameImage);
+
+        _urlImage = result;
+    }
+
+    private async Task DeleteImageCloud(string imgRef)
+    {
+        await CloudinaryManager.DeleteImage(_folder, imgRef);
+    }
+
+    private void ResetFields()
+    {
+        characters = new CharacterDTO();
+        _selectedImage = false;
+        imagePreview = url;
+        _urlImage = null!;
+        _refImage = null!;
+        btntitle = "ADD CHARACTER";
+        title = "Add Character";
+    }
+
+    private bool ValiDationsFields()
+    {
+        if (characters.FirstName == null || characters.FirstName == "")
+        {
+            return false;
+        }
+        else if (characters.IdClan == 0)
+        {
+            return false;
+        }
+        else if (characters.Age == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}

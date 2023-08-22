@@ -1,0 +1,67 @@
+﻿@page "/"
+
+<div class="form-control w-75 m-auto mt-5">
+    <div class="d-flex">
+        <h1 class="m-auto">@title</h1>
+
+    </div>
+       
+    <div class="@ShowLogin" >
+        <EditForm Model="authData">
+            <InputText @bind-Value="authData.Username"
+                       class="form-control mb-4" 
+                       placeholder="UserName" />
+            <InputText @bind-Value="authData.Password"
+                       class="form-control mb-3" 
+                       type="password"
+                       placeholder="Password" />
+            <div>
+                <button class="btn btn-primary mb-3"
+                        @onclick="() => Login()">
+                    <i class="bi bi-person-lock"></i> 
+                        Login
+                </button>
+                <button 
+                    class="btn btn-secondary mb-3" 
+                    @onclick="() => ShowBtn()">
+                    <i class="bi bi-person-plus"></i> 
+                    @btnTitle
+                </button>
+            </div>
+         </EditForm>
+    </div>
+
+    <div class="@ShowRegister">
+        <EditForm Model="authData">
+        
+            <InputText @bind-Value="authData.Username"
+                       class="form-control mb-4" 
+                       placeholder="UserName" />
+       
+            <InputText @bind-Value="authData.Email"
+                       class="form-control mb-4" 
+                       placeholder="Email" />
+            
+            <InputText @bind-Value="authData.Password"
+                       type="password"
+                       class="form-control mb-3" 
+                       placeholder="Password" />
+            <div class="">
+                <button 
+                    class="btn btn-primary" 
+                    @onclick="() => Register()">
+                    <i class="bi bi-person-plus"></i> 
+                        Register
+                </button>
+                <button 
+                    class="btn btn-secondary" 
+                    @onclick="() => ShowBtn()">
+                    <i class="bi bi-person-lock"></i> 
+                        @btnTitle
+                </button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+

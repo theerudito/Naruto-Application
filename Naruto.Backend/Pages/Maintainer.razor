@@ -1,0 +1,116 @@
+﻿@page "/maintainer"
+
+@inject ICharacter Characters;
+@inject NavigationManager NavigationManager;
+@inject Cloudinary_Manager CloudinaryManager;
+@inject SweetAlertService Swal;
+
+<div class="d-flex mb-2">
+    <h3 class="m-auto">Maintainer</h3>
+</div>
+
+
+<div class="input-group mb-3 p-3">
+    <input type="text"
+           @oninput="SeachCharacter"
+           class="form-control w-50"
+           placeholder="Search Character"
+           aria-label="Search Character"
+           aria-describedby="button-addon2">
+</div>
+
+
+
+@if (characters != null)
+{
+    <div class="container">
+
+        @foreach (var item in characters)
+        {
+            <div class="card w-100">
+                <div class="d-flex justify-content-center align-items-center p-2">
+                    <img src="@item.Image" class="image" alt="picture">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Name: @item.FirstName</h5>
+                    <p class="card-text m-0">Clan: @item.NameClan</p>
+                    <p class="card-text m-0">Age: @item.Age</p>
+                    <p class="card-text m-0">Jutsu: Rasengan</p>
+                    <p class="card-text m-0">Aldea: Aldea</p>
+                    <p class="card-text m-0">Occupation: Aldea</p>
+                    <p class="card-text m-0">Status: Vivo</p>
+
+                    
+                </div>
+                <div class="d-flex mb-1">
+                    <button class="btn btn-warning m-auto"
+                    @onclick="() => EditCharacter(item.IdCharacter)">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button class="btn btn-danger m-auto"
+                    @onclick="() => DeleteCharacter(item.RefImage, item.IdCharacter)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+
+}
+else
+{
+    <div class="container">
+        <p>There are no characters</p>
+    </div>
+
+}
+
+
+
+@code {
+
+    List<CharacterDTO>? characters = null;
+    public string _folder = "character";
+
+    protected override async Task OnInitializedAsync()
+    {
+        characters = await Characters._GETS();
+    }
+
+    private void EditCharacter(int id)
+    {
+        NavigationManager.NavigateTo($"/addCharacter/{id}");
+    }
+
+    private async Task DeleteCharacter(string imgRef , int id)
+    {
+        var alert = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "¿Estás seguro?",
+                Text = "¡No podrás revertir esto!",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                CancelButtonText = "¡No, cancela!",
+                ConfirmButtonText = "¡Sí, bórralo!",
+                ReverseButtons = true
+            });
+
+        if (alert.IsConfirmed)
+        {
+            var query = await Characters._DELETE(id);
+            await DeleteImageCloud(imgRef);
+            await OnInitializedAsync();
+        }
+    }
+
+    private async Task DeleteImageCloud(string imgRef)
+    {
+        var query = await CloudinaryManager.DeleteImage(_folder, imgRef);
+    }
+    private async void SeachCharacter(ChangeEventArgs e)
+    {
+        characters = await Characters._SEACHING(e.Value.ToString());
+        StateHasChanged();
+    }
+}
+

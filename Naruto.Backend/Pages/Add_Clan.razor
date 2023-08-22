@@ -1,0 +1,102 @@
+﻿@page "/addClan"
+
+<div class="d-flex">
+    <h3 class="m-auto">@title</h3>
+</div>
+
+<div >
+    <EditForm Model="clan">
+        <div class="d-flex mb-2">
+            <div class="form-control m-1">
+                    <label>Clan Name</label>
+                    <InputText 
+                        @bind-Value="clan.ClanName" 
+                        class="form-control mb-1" 
+                        placeholder="Clan Name" />
+                    <label>Imagen</label>
+                    <InputFile 
+                        class="form-control mb-2" 
+                        OnChange="LoadImage" 
+                        accept="image/png, image/jpeg, image/webp" />
+
+                    <div>
+                        <button type="button"
+                                class="btn btn-primary mb-1"
+                                style="font-size: 12px"
+                            @onclick="(() => SubmitData())">
+                            @btntitle
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-secondary mb-1"
+                                style="font-size: 12px"
+                                @onclick="(() => Cancel())">
+                            CANCEL
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-control d-flex m-1">
+                <img src="@imagePreview" 
+                    class="p-2 m-auto" 
+                    style="width : 200px; height: 200px; object-fit: fill" />
+                </div>
+            </div>    
+    </EditForm>
+
+    <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <td class="text-light fw-bold">IMG</td>
+                    <td class="text-light fw-bold">IDCLAN</td>
+                    <td class="text-light fw-bold">CLAN NAME</td>
+                    <td class="text-light fw-bold">ACTIONS</td>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @if (clanList != null)
+                {
+                    @foreach (var item in clanList)
+                    {
+                        <tr>
+
+                            <td>
+                                <img class="imgData" 
+                                    src="@item.Image" 
+                                    alt="" width="30" height="30" />
+                            </td>
+                            <td class="idClan">@item.IdClan</td>
+                            <td class="nameClan">@item.ClanName</td>
+                            <td>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-warning" 
+                                    @onclick="(() => GetClanById(item.IdClan, item.RefImage))">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </button>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-danger" 
+                                    @onclick="(() => DeleteClan(item.IdClan, item.RefImage))">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            <p>No hay datos</p>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+
