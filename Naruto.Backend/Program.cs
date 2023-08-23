@@ -29,14 +29,19 @@ builder.Services.AddDbContext<Application_ContextDB>(options => options.UseSqlit
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSweetAlert2();
+builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddScoped<ICharacter, RepositoryCharacter>();
 builder.Services.AddScoped<IClan, RepositoryClan>();
+
 builder.Services.AddScoped<Cloudinary_Manager>();
 builder.Services.AddScoped<RepositoryAuth>();
-builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<LocalStorageData>();
-
+builder.Services.AddScoped<RepositoryJutsu>();
+builder.Services.AddScoped<RepositoryOcupation>();
+builder.Services.AddScoped<RepositoryStatus>();
+builder.Services.AddScoped<RepositoryVillage>();
+builder.Services.AddScoped<InitialConfiguration>();
 
 
 //AutoMapper

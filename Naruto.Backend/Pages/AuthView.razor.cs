@@ -16,6 +16,9 @@ namespace Naruto.Backend.Pages
         [Inject]
         private NavigationManager NavigationManager { get; set; } = null!;
 
+        [Inject]
+        private InitialConfiguration myConfig { get; set; } = null!;
+
         string title = "Register";
         string btnTitle = "Show Login";
         bool isLogin = false;
@@ -48,15 +51,14 @@ namespace Naruto.Backend.Pages
 
         protected override async Task OnInitializedAsync()
         {
+
+            //   await myConfig.DefaultData();
             await base.OnInitializedAsync();
             if (await LocalStorageData.GetLocalStorage() != null)
             {
                 NavigationManager.NavigateTo("/home");
             }
-            else
-            {
-                //  NavigationManager.NavigateTo("/");
-            }
+
         }
 
 

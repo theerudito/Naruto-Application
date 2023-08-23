@@ -924,6 +924,7 @@
           "Blazored.LocalStorage": "4.4.0",
           "CloudinaryDotNet": "1.22.0",
           "Microsoft.AspNetCore.Components.Web": "7.0.0",
+          "Naruto.Data": "1.0.0",
           "Naruto.Models": "1.0.0"
         },
         "runtime": {

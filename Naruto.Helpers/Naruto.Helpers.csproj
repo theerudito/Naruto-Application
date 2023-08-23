@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Naruto.Data\Naruto.Data.csproj" />
     <ProjectReference Include="..\Naruto.Models\Naruto.Models.csproj" />
   </ItemGroup>
 

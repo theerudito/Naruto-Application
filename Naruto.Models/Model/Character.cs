@@ -13,5 +13,17 @@ namespace Naruto.Models.Model
 
         public int? IdClan { get; set; }
         public virtual Clan? Clan { get; set; }
+
+        public int? IdVillage { get; set; }
+        public virtual Villages? Villages { get; set; }
+
+        public int? IdJutsu { get; set; }
+        public virtual Jutsus? Jutsus { get; set; }
+
+        public int? IdOcupation { get; set; }
+        public virtual Ocupations? Ocupations { get; set; }
+
+        public int? IdStatus { get; set; }
+        public virtual Status? Status { get; set; }
     }
 }

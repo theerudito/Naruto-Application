@@ -2,11 +2,6 @@
 @page "/addCharacter/{IdCharacter:int}" 
 
  
-@inject ICharacter Characters;
-@inject IClan Clans;
-@inject NavigationManager NavigationManager;
-@inject Cloudinary_Manager CloudinaryManager;
-@inject SweetAlertService Swal;
 
 <div class="d-flex">
     <h3 class="m-auto">@title</h3>
@@ -27,25 +22,127 @@
                     placeholder="First Name" />
                 <ValidationMessage For="@(() => characters.FirstName)"/>
             </div>
-            <div class="mb-3">
+        <div class="mb-1 m-auto d-flex">
+
+            <div class="w-75">
                 <label>Clan</label>
-                <InputSelect class="form-select"
-                             @bind-Value="characters.IdClan">
+                <InputSelect class="form-select" @bind-Value="characters.IdClan">
                     <option>-- SELECT A CLAN --</option>
 
                     @foreach (var item in listClan)
                     {
-                    <option value="@item.IdClan"> @item.ClanName</option>
+                        <option value="@item.IdClan"> @item.ClanName</option>
+                    }
+                </InputSelect>
+
+
+            </div>
+            <button @onclick='() => SelectButtonModal("clan")'
+                type="button" 
+                class="btn btn-danger h-100 m-auto mb-0" 
+                data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">
+                <i class="bi bi-file-earmark-plus"></i>
+            </button>
+
+        </div>
+
+        <div class="mb-1 m-auto d-flex">
+
+            <div class="w-75">
+                <label>Jutsu</label>
+                <InputSelect class="form-select" @bind-Value="characters.IdJutsu">
+                    <option>-- SELECT A JUTSU --</option>
+
+                    @foreach (var item in listJutsu)
+                    {
+                        <option value="@item.IdJutsu"> @item.JutsuName</option>
+                    }
+                </InputSelect>
+
+
+            </div>
+            <button @onclick='() => SelectButtonModal("jutsu")'
+                type="button" 
+                class="btn btn-danger h-100 m-auto mb-0" 
+                data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">
+                <i class="bi bi-lightning-fill"></i>
+            </button>
+
+        </div>
+
+        <div class="mb-1 m-auto d-flex">
+
+            <div class="w-75">
+                <label>Village</label>
+                <InputSelect class="form-select" @bind-Value="characters.IdVillage">
+                    <option>-- SELECT A VILLAGE --</option>
+
+                    @foreach (var item in listVillage)
+                    {
+                        <option value="@item.IdVillage"> @item.VillageName</option>
+                    }
+                </InputSelect>
+
+
+            </div>
+            <button @onclick='() => SelectButtonModal("village")'
+                type="button" 
+                class="btn btn-danger h-100 m-auto mb-0" 
+                data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">
+                <i class="bi bi-house-door-fill"></i>
+            </button>
+
+        </div>
+        <div class="mb-1 m-auto d-flex">
+
+            <div class="w-75">
+                <label>Ocupation</label>
+                <InputSelect class="form-select" @bind-Value="characters.IdOcupation">
+                    <option>-- SELECT A OCUPATION --</option>
+                    @foreach (var item in listOcupation)
+                    {
+                        <option value="@item.IdOcupation"> @item.OcupationName</option>
+                    }
+                </InputSelect>
+
+
+            </div>
+            <button @onclick='() => SelectButtonModal("ocupation")'
+                type="button" 
+                class="btn btn-danger h-100 m-auto mb-0" 
+                data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">
+                <i class="bi bi-person-circle"></i>
+            </button>
+
+        </div>
+           
+        <div class="mb-1 m-auto d-flex">    
+
+            <div class="w-75">
+                <label>Status</label>
+                <InputSelect class="form-select" @bind-Value="characters.IdStatus">
+                    <option>-- SELECT A STATUS --</option>
+
+                    @foreach (var item in listStatus)
+                    {
+                        <option value="@item.IdStatus"> @item.Alive</option>
                     }
                 </InputSelect>
             </div>
-            <div>
-                <label>Age</label>
-                <InputNumber 
-                    @bind-Value="characters.Age"  
-                    class="form-control mb-3" 
-                    placeholder="Age" />
-            </div>
+            
+
+        </div>
+
+        <div>
+            <label>Age</label>
+            <InputNumber @bind-Value="characters.Age"
+                         class="form-control mb-3"
+                         placeholder="Age" />
+        </div>
 
         <label>Image</label>
         <InputFile 
@@ -81,199 +178,46 @@
     </div>  
 </div>
 
-@code {
-    [Parameter]
-    public int IdCharacter { get; set; } = 0;
+<div 
+    class="modal fade" 
+    id="exampleModal" 
+    tabindex="-1" 
+    aria-labelledby="exampleModalLabel" 
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" 
+                    id="exampleModalLabel">@ModalTitle</h1>
+                <button 
+                    type="button" 
+                    class="btn-close" 
+                    data-bs-dismiss="modal" 
+                    aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <input 
+                    type="text" 
+                    @bind="propertyModel" 
+                    class="form-control mb-3" 
+                    placeholder="@namePlaceholder" /> 
+            </div>
+            <div class="modal-footer">
+                <button 
+                    type="button" 
+                    class="btn btn-secondary"
+                        data-bs-dismiss="@closeModal">
+                    Close
+                </button>
+                <button 
+                    type="button" 
+                    class="btn btn-primary"
+                        @onclick="() => AddInfoAditiona()">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    static string url = "Assets/Naruto_logo.png";
-
-    public string imagePreview = url;
-
-    public string _folder = "character";
-
-    public bool _selectedImage;
-
-    public string _urlImage = null!;
-
-    public string _refImage = null!;
-
-    public string nameImage = Guid.NewGuid().ToString();
-
-    List<ClanDTO> listClan = new List<ClanDTO>();
-
-    CharacterDTO characters = new CharacterDTO();
-
-    string btntitle = "";
-
-    string title = "Add Character";
-
-    protected override async Task OnInitializedAsync()
-    { 
-        if (IdCharacter == 0)
-        {
-            btntitle = "ADD CHARACTER";
-            title = "Add Character";
-            listClan = await Clans._GETS();
-
-        }
-        else
-        {
-            btntitle = "EDIT CHARACTER";
-            title = "Edit Character";
-            listClan = await Clans._GETS();
-            await GetOneCharacter();
-        }    
-    }
-
-    private async Task GetOneCharacter()
-    {
-        characters = await Characters._GET(IdCharacter);
-        imagePreview = characters.Image;
-        _refImage = characters.RefImage;
-        characters.IdClan = characters.IdClan;
-    }
-
-    private async Task SubmitData()
-    {
-        if (IdCharacter == 0)
-        {
-            if (ValiDationsFields() == true && _selectedImage == true)
-            {
-                await UpLoadImage();
-
-                var newChatacter = new CharacterDTO
-                    {
-                        FirstName = characters.FirstName,
-                        IdClan = characters.IdClan,
-                        Age = characters.Age,
-                        Image = _urlImage,
-                        RefImage = nameImage
-                    };
-
-                var result = await Characters._POST(newChatacter);
-                ResetFields();
-                StateHasChanged();
-            } else
-            {
-                await Swal.FireAsync("Error", "Please fill in all the fields and Image", SweetAlertIcon.Error);
-            }
-        }
-        else
-        {
-            if (_selectedImage == true)
-            {
-                if (ValiDationsFields() == true)
-                {
-                    await UpLoadImage();
-
-                    await DeleteImageCloud(_refImage);
-
-                    var newChatacter = new CharacterDTO
-                        {
-                            FirstName = characters.FirstName,
-                            IdClan = characters.IdClan,
-                            Age = characters.Age,
-                            Image = _urlImage,
-                            RefImage = nameImage
-                        };
-
-                    var result = await Characters._PUT(newChatacter, IdCharacter);
-
-                    if (result == true)
-                    {
-                        ResetFields();
-                        StateHasChanged();
-                    }
-                    else
-                    {   
-                        await Swal.FireAsync("Error", "Please fill in all the fields", SweetAlertIcon.Error);
-                    }
-                }
-
-            } else
-            {
-                if (ValiDationsFields() == true)
-                {
-                    var newChatacter = new CharacterDTO
-                        {
-                            FirstName = characters.FirstName,
-                            IdClan = characters.IdClan,
-                            Age = characters.Age,
-                            Image = characters.Image,
-                            RefImage = characters.RefImage
-                        };
-                    var result = await Characters._PUT(newChatacter, IdCharacter);
-                    if (result == true)
-                    {
-                        ResetFields();
-                        StateHasChanged();
-                    }   
-                } else
-                {
-                    await Swal.FireAsync("Error", "Please fill in all the fields", SweetAlertIcon.Error);  
-                }
-            }
-        }
-    }
-
-
-
-    private async Task LoadImage(InputFileChangeEventArgs e)
-    {
-        _selectedImage = true;
-
-        var view = await CloudinaryManager.SelectImage(e);
-
-        if (view != null)
-        {
-            imagePreview = view;
-        } else
-        {
-            imagePreview = url;
-        }
-
-    }
-
-    private async Task UpLoadImage()
-    {
-        var result = await CloudinaryManager.UploadImage(_folder, nameImage);
-
-        _urlImage = result;
-    }
-
-    private async Task DeleteImageCloud(string imgRef)
-    {
-        await CloudinaryManager.DeleteImage(_folder, imgRef);
-    }
-
-    private void ResetFields()
-    {
-        characters = new CharacterDTO();
-        _selectedImage = false;
-        imagePreview = url;
-        _urlImage = null!;
-        _refImage = null!;
-        btntitle = "ADD CHARACTER";
-        title = "Add Character";
-    }
-
-    private bool ValiDationsFields()
-    {
-        if (characters.FirstName == null || characters.FirstName == "")
-        {
-            return false;
-        }
-        else if (characters.IdClan == 0)
-        {
-            return false;
-        }
-        else if (characters.Age == 0)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-}

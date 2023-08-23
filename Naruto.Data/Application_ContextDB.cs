@@ -17,5 +17,9 @@ namespace Naruto.Data
         public DbSet<Auth> Auth { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Clan> Clan { get; set; }
+        public DbSet<Jutsus> Jutsu { get; set; }
+        public DbSet<Villages> Village { get; set; }
+        public DbSet<Ocupations> Ocupation { get; set; }
+        public DbSet<Status> Status { get; set; }
     }
 }

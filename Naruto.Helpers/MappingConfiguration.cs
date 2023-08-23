@@ -14,6 +14,19 @@ namespace Naruto.Helpers
 
             CreateMap<ClanDTO, Clan>();
             CreateMap<Clan, ClanDTO>();
+
+            CreateMap<JutsusDTO, Jutsus>();
+            CreateMap<Jutsus, JutsusDTO>();
+
+            CreateMap<OcupationDTO, Ocupations>();
+            CreateMap<Ocupations, OcupationDTO>();
+
+            CreateMap<StatusDTO, Status>();
+            CreateMap<Status, StatusDTO>();
+
+            CreateMap<VillagesDTO, Villages>();
+            CreateMap<Villages, VillagesDTO>();
+
         }
     }
 }
