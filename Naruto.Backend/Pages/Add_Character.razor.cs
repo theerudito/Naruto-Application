@@ -32,7 +32,7 @@ namespace Naruto.Backend.Pages
         private RepositoryOcupation Ocupation { get; set; } = null!;
 
         [Inject]
-        private RepositoryStatus Status { get; set; } = null!;
+        private RepositoryCurrent Status { get; set; } = null!;
 
 
         [Parameter]
@@ -53,7 +53,7 @@ namespace Naruto.Backend.Pages
         List<OcupationDTO> listOcupation = new List<OcupationDTO>();
         OcupationDTO addOcupation = new OcupationDTO();
 
-        List<StatusDTO> listStatus = new List<StatusDTO>();
+        List<CurrentDTO> listStatus = new List<CurrentDTO>();
 
 
         static string url = "Assets/Naruto_logo.png";
@@ -196,10 +196,14 @@ namespace Naruto.Backend.Pages
                         IdClan = characters.IdClan,
                         Age = characters.Age,
                         Image = _urlImage,
-                        RefImage = nameImage
+                        RefImage = nameImage,
+                        IdJutsu = characters.IdJutsu,
+                        IdVillage = characters.IdVillage,
+                        IdOcupation = characters.IdOcupation,
+                        IdStatus = characters.IdStatus
                     };
 
-                    var result = await Characters._POST(newChatacter);
+                    await Characters._POST(newChatacter);
                     ResetFields();
                     StateHasChanged();
                 }
@@ -224,7 +228,11 @@ namespace Naruto.Backend.Pages
                             IdClan = characters.IdClan,
                             Age = characters.Age,
                             Image = _urlImage,
-                            RefImage = nameImage
+                            RefImage = nameImage,
+                            IdJutsu = characters.IdJutsu,
+                            IdVillage = characters.IdVillage,
+                            IdOcupation = characters.IdOcupation,
+                            IdStatus = characters.IdStatus
                         };
 
                         var result = await Characters._PUT(newChatacter, IdCharacter);
@@ -251,7 +259,11 @@ namespace Naruto.Backend.Pages
                             IdClan = characters.IdClan,
                             Age = characters.Age,
                             Image = characters.Image,
-                            RefImage = characters.RefImage
+                            RefImage = characters.RefImage,
+                            IdJutsu = characters.IdJutsu,
+                            IdVillage = characters.IdVillage,
+                            IdOcupation = characters.IdOcupation,
+                            IdStatus = characters.IdStatus
                         };
                         var result = await Characters._PUT(newChatacter, IdCharacter);
                         if (result == true)

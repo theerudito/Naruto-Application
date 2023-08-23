@@ -13,6 +13,5 @@ C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\refint\Naruto.Helpers.dll
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\Naruto.Helpers.pdb
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\obj\Debug\net7.0\ref\Naruto.Helpers.dll
-C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\MyDatabase\Naruto.db
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\Naruto.Data.dll
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Helpers\bin\Debug\net7.0\Naruto.Data.pdb

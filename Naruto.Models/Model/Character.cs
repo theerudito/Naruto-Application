@@ -10,7 +10,9 @@ namespace Naruto.Models.Model
         public int Age { get; set; }
         public string Image { get; set; } = string.Empty;
         public string RefImage { get; set; } = string.Empty;
+        public bool Status { get; set; }
 
+        // Foreign Key
         public int? IdClan { get; set; }
         public virtual Clan? Clan { get; set; }
 
@@ -24,6 +26,6 @@ namespace Naruto.Models.Model
         public virtual Ocupations? Ocupations { get; set; }
 
         public int? IdStatus { get; set; }
-        public virtual Status? Status { get; set; }
+        public virtual Current? Current { get; set; }
     }
 }

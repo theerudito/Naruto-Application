@@ -11,8 +11,8 @@ using Naruto.Data;
 namespace Naruto.Data.Migrations
 {
     [DbContext(typeof(Application_ContextDB))]
-    [Migration("20230823012214_Inicial4")]
-    partial class Inicial4
+    [Migration("20230823195243_Inicial1")]
+    partial class Inicial1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,9 @@ namespace Naruto.Data.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -55,11 +58,26 @@ namespace Naruto.Data.Migrations
                     b.Property<int?>("ClanIdClan")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("CurrentIdStatus")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("IdClan")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdJutsu")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdOcupation")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdStatus")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdVillage")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Image")
@@ -76,7 +94,7 @@ namespace Naruto.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("StatusIdStatus")
+                    b.Property<bool>("Status")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("VillagesIdVillage")
@@ -86,11 +104,11 @@ namespace Naruto.Data.Migrations
 
                     b.HasIndex("ClanIdClan");
 
+                    b.HasIndex("CurrentIdStatus");
+
                     b.HasIndex("JutsusIdJutsu");
 
                     b.HasIndex("OcupationsIdOcupation");
-
-                    b.HasIndex("StatusIdStatus");
 
                     b.HasIndex("VillagesIdVillage");
 
@@ -114,9 +132,29 @@ namespace Naruto.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("IdClan");
 
                     b.ToTable("Clan");
+                });
+
+            modelBuilder.Entity("Naruto.Models.Model.Current", b =>
+                {
+                    b.Property<int>("IdStatus")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Alive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdStatus");
+
+                    b.ToTable("Current");
                 });
 
             modelBuilder.Entity("Naruto.Models.Model.Jutsus", b =>
@@ -127,6 +165,9 @@ namespace Naruto.Data.Migrations
 
                     b.Property<string>("JutsuName")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("IdJutsu");
 
@@ -142,29 +183,21 @@ namespace Naruto.Data.Migrations
                     b.Property<string>("OcupationName")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("IdOcupation");
 
                     b.ToTable("Ocupation");
-                });
-
-            modelBuilder.Entity("Naruto.Models.Model.Status", b =>
-                {
-                    b.Property<int>("IdStatus")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Alive")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("IdStatus");
-
-                    b.ToTable("Status");
                 });
 
             modelBuilder.Entity("Naruto.Models.Model.Villages", b =>
                 {
                     b.Property<int>("IdVillage")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Status")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("VillageName")
@@ -181,26 +214,39 @@ namespace Naruto.Data.Migrations
                         .WithMany("Characters")
                         .HasForeignKey("ClanIdClan");
 
-                    b.HasOne("Naruto.Models.Model.Jutsus", null)
+                    b.HasOne("Naruto.Models.Model.Current", "Current")
+                        .WithMany("Characters")
+                        .HasForeignKey("CurrentIdStatus");
+
+                    b.HasOne("Naruto.Models.Model.Jutsus", "Jutsus")
                         .WithMany("Characters")
                         .HasForeignKey("JutsusIdJutsu");
 
-                    b.HasOne("Naruto.Models.Model.Ocupations", null)
+                    b.HasOne("Naruto.Models.Model.Ocupations", "Ocupations")
                         .WithMany("Characters")
                         .HasForeignKey("OcupationsIdOcupation");
 
-                    b.HasOne("Naruto.Models.Model.Status", null)
-                        .WithMany("Characters")
-                        .HasForeignKey("StatusIdStatus");
-
-                    b.HasOne("Naruto.Models.Model.Villages", null)
+                    b.HasOne("Naruto.Models.Model.Villages", "Villages")
                         .WithMany("Characters")
                         .HasForeignKey("VillagesIdVillage");
 
                     b.Navigation("Clan");
+
+                    b.Navigation("Current");
+
+                    b.Navigation("Jutsus");
+
+                    b.Navigation("Ocupations");
+
+                    b.Navigation("Villages");
                 });
 
             modelBuilder.Entity("Naruto.Models.Model.Clan", b =>
+                {
+                    b.Navigation("Characters");
+                });
+
+            modelBuilder.Entity("Naruto.Models.Model.Current", b =>
                 {
                     b.Navigation("Characters");
                 });
@@ -211,11 +257,6 @@ namespace Naruto.Data.Migrations
                 });
 
             modelBuilder.Entity("Naruto.Models.Model.Ocupations", b =>
-                {
-                    b.Navigation("Characters");
-                });
-
-            modelBuilder.Entity("Naruto.Models.Model.Status", b =>
                 {
                     b.Navigation("Characters");
                 });

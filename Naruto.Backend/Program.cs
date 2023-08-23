@@ -39,7 +39,7 @@ builder.Services.AddScoped<RepositoryAuth>();
 builder.Services.AddScoped<LocalStorageData>();
 builder.Services.AddScoped<RepositoryJutsu>();
 builder.Services.AddScoped<RepositoryOcupation>();
-builder.Services.AddScoped<RepositoryStatus>();
+builder.Services.AddScoped<RepositoryCurrent>();
 builder.Services.AddScoped<RepositoryVillage>();
 builder.Services.AddScoped<InitialConfiguration>();
 

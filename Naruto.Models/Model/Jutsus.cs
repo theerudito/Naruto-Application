@@ -7,6 +7,9 @@ namespace Naruto.Models.Model
         [Key]
         public int IdJutsu { get; set; }
         public string? JutsuName { get; set; } = string.Empty;
+        public bool Status { get; set; }
+
+        // navigation properties
         public virtual ICollection<Character>? Characters { get; set; } = new List<Character>();
     }
 }

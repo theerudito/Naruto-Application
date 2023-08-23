@@ -1,4 +1,3 @@
-C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Service\bin\Debug\net7.0\MyDatabase\Naruto.db
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Service\bin\Debug\net7.0\Naruto.Service.deps.json
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Service\bin\Debug\net7.0\Naruto.Service.dll
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Service\bin\Debug\net7.0\Naruto.Service.pdb

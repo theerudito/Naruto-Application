@@ -45,7 +45,7 @@ namespace Naruto.Helpers
                     OcupationName = "Hokage",
                 };
 
-                var status = new Status
+                var status = new Current
                 {
                     IdStatus = idInitial,
                     Alive = true
@@ -69,7 +69,7 @@ namespace Naruto.Helpers
                 _dbContext.Jutsu.Add(jutsu);
                 _dbContext.Village.Add(village);
                 _dbContext.Ocupation.Add(ocupation);
-                _dbContext.Status.Add(status);
+                _dbContext.Current.Add(status);
                 _dbContext.Characters.Add(character);
                 await _dbContext.SaveChangesAsync();
             }

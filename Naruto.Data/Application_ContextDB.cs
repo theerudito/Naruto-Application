@@ -20,6 +20,6 @@ namespace Naruto.Data
         public DbSet<Jutsus> Jutsu { get; set; }
         public DbSet<Villages> Village { get; set; }
         public DbSet<Ocupations> Ocupation { get; set; }
-        public DbSet<Status> Status { get; set; }
+        public DbSet<Current> Current { get; set; }
     }
 }

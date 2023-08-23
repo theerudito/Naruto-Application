@@ -19,16 +19,23 @@ namespace Naruto.Service.Repositories
         }
         public async Task<List<CharacterDTO>> _GETS()
         {
-            var query = await _dbContext.Characters.ToListAsync();
+            var query = await _dbContext.Characters
+
+             .ToListAsync();
 
             return query != null ? _mapper.Map<List<CharacterDTO>>(query) : null!;
         }
 
         public async Task<CharacterDTO> _GET(int id)
         {
-            var query = await _dbContext.Characters.Include(c => c.Clan)
-                 .Where(c => c.IdCharacter == id)
-                 .FirstOrDefaultAsync();
+            var query = await _dbContext.Characters
+             .Include(c => c.Clan)
+             .Include(o => o.Ocupations)
+             .Include(v => v.Villages)
+             .Include(s => s.Current)
+             .Include(c => c.Jutsus)
+             .Where(i => i.IdCharacter == id)
+             .FirstOrDefaultAsync();
 
             return query != null ? _mapper.Map<CharacterDTO>(query) : null!;
         }
@@ -58,7 +65,6 @@ namespace Naruto.Service.Repositories
         public async Task<bool> _PUT(CharacterDTO character, int id)
         {
             var query = await _dbContext.Characters
-                .Include(c => c.Clan)
                 .Where(c => c.IdCharacter == id)
                 .FirstOrDefaultAsync();
 
@@ -67,8 +73,13 @@ namespace Naruto.Service.Repositories
                 query.FirstName = character.FirstName;
                 query.Image = character.Image;
                 query.RefImage = character.RefImage;
-                query.IdClan = character.IdClan;
                 query.Age = character.Age;
+                query.IdClan = character.IdClan;
+                query.IdJutsu = character.IdJutsu;
+                query.IdOcupation = character.IdOcupation;
+                query.IdStatus = character.IdStatus;
+                query.IdVillage = character.IdVillage;
+
 
                 _dbContext.Characters.Update(query);
 

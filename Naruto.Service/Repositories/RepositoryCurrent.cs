@@ -6,36 +6,36 @@ using Naruto.Models.Model;
 
 namespace Naruto.Service.Repositories
 {
-    public class RepositoryStatus
+    public class RepositoryCurrent
     {
         private readonly Application_ContextDB _dbContext;
         private readonly IMapper _mapper;
-        public RepositoryStatus(Application_ContextDB dbContext, IMapper mapper)
+        public RepositoryCurrent(Application_ContextDB dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
 
-        public async Task<List<StatusDTO>> _GETS()
+        public async Task<List<CurrentDTO>> _GETS()
         {
-            var query = await _dbContext.Status.ToListAsync();
+            var query = await _dbContext.Current.ToListAsync();
 
-            return _mapper.Map<List<StatusDTO>>(query);
+            return _mapper.Map<List<CurrentDTO>>(query);
         }
-        public Task<StatusDTO> _GET(int id)
+        public Task<CurrentDTO> _GET(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<StatusDTO> _POST(StatusDTO status)
+        public async Task<CurrentDTO> _POST(CurrentDTO status)
         {
-            var newStatus = _mapper.Map<Status>(status);
-            _dbContext.Status.Add(newStatus);
+            var newStatus = _mapper.Map<Current>(status);
+            _dbContext.Current.Add(newStatus);
             await _dbContext.SaveChangesAsync();
-            return _mapper.Map<StatusDTO>(newStatus);
+            return _mapper.Map<CurrentDTO>(newStatus);
         }
 
-        public Task<bool> _PUT(StatusDTO status, int id)
+        public Task<bool> _PUT(CurrentDTO status, int id)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naruto.Models.DTO
 {
@@ -11,19 +12,27 @@ namespace Naruto.Models.DTO
         public string Image { get; set; } = string.Empty;
         public string RefImage { get; set; } = string.Empty;
 
-        public int IdClan { get; set; }
+        public int? IdClan { get; set; }
+        [NotMapped]
         public string NameClan { get; set; } = string.Empty;
 
-        public int IdVillage { get; set; }
+        public int? IdVillage { get; set; }
+        [NotMapped]
         public string NameVillage { get; set; } = string.Empty;
 
-        public int IdJutsu { get; set; }
+        public int? IdJutsu { get; set; }
+        [NotMapped]
         public string NameJutsu { get; set; } = string.Empty;
 
-        public int IdOcupation { get; set; }
+        public int? IdOcupation { get; set; }
+        [NotMapped]
         public string NameOcupation { get; set; } = string.Empty;
 
-        public int IdStatus { get; set; }
+        public int? IdStatus { get; set; }
+        [NotMapped]
         public bool Alive { get; set; }
+
+        public bool Status { get; set; }
     }
+
 }
