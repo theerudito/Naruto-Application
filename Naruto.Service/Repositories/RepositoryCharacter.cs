@@ -19,13 +19,31 @@ namespace Naruto.Service.Repositories
         }
         public async Task<List<CharacterDTO>> _GETS()
         {
-            var query = await _dbContext.Characters
+            var query = from character in _dbContext.Characters
+                        join clan in _dbContext.Clan on character.IdClan equals clan.IdClan
+                        join ocupation in _dbContext.Ocupation on character.IdOcupation equals ocupation.IdOcupation
+                        join jutsu in _dbContext.Jutsu on character.IdJutsu equals jutsu.IdJutsu
+                        join village in _dbContext.Village on character.IdVillage equals village.IdVillage
+                        join status in _dbContext.Current on character.IdStatus equals status.IdStatus
+                        where character.Status == true
+                        select new CharacterDTO
+                        {
+                            IdCharacter = character.IdCharacter,
+                            FirstName = character.FirstName,
+                            Image = character.Image,
+                            RefImage = character.RefImage,
+                            Age = character.Age,
+                            NameClan = clan.ClanName!,
+                            NameVillage = village.VillageName!,
+                            NameOcupation = ocupation.OcupationName!,
+                            NameJutsu = jutsu.JutsuName!,
+                            Status = character.Status,
+                            Alive = status.Alive,
 
-             .ToListAsync();
 
-            return query != null ? _mapper.Map<List<CharacterDTO>>(query) : null!;
+                        };
+            return await query.ToListAsync();
         }
-
         public async Task<CharacterDTO> _GET(int id)
         {
             var query = await _dbContext.Characters
@@ -39,7 +57,6 @@ namespace Naruto.Service.Repositories
 
             return query != null ? _mapper.Map<CharacterDTO>(query) : null!;
         }
-
         public async Task<CharacterDTO> _POST(CharacterDTO character)
         {
             var query = await _dbContext.Characters
@@ -61,7 +78,6 @@ namespace Naruto.Service.Repositories
                 return null!;
             }
         }
-
         public async Task<bool> _PUT(CharacterDTO character, int id)
         {
             var query = await _dbContext.Characters
@@ -79,7 +95,6 @@ namespace Naruto.Service.Repositories
                 query.IdOcupation = character.IdOcupation;
                 query.IdStatus = character.IdStatus;
                 query.IdVillage = character.IdVillage;
-
 
                 _dbContext.Characters.Update(query);
 
@@ -99,7 +114,8 @@ namespace Naruto.Service.Repositories
 
             if (query != null)
             {
-                _dbContext.Characters.Remove(query);
+
+                query.Status = false;
 
                 await _dbContext.SaveChangesAsync();
 
@@ -110,25 +126,35 @@ namespace Naruto.Service.Repositories
                 return false;
             }
         }
-
         public async Task<List<CharacterDTO>> _SEACHING(string field)
         {
-            var query = _dbContext.Characters
-                .Include(c => c.Clan)
-                .Where(c => c.FirstName.Contains(field))
-                .ToListAsync();
-
-            if (query != null)
-            {
-                return _mapper.Map<List<CharacterDTO>>(await query);
-            }
-            else
-            {
-
-                var query2 = _dbContext.Characters.ToListAsync();
-
-                return _mapper.Map<List<CharacterDTO>>(query2);
-            }
+            var query = from character in _dbContext.Characters
+                        join clan in _dbContext.Clan on character.IdClan equals clan.IdClan
+                        join ocupation in _dbContext.Ocupation on character.IdOcupation equals ocupation.IdOcupation
+                        join jutsu in _dbContext.Jutsu on character.IdJutsu equals jutsu.IdJutsu
+                        join village in _dbContext.Village on character.IdVillage equals village.IdVillage
+                        join status in _dbContext.Current on character.IdStatus equals status.IdStatus
+                        where character.FirstName.Contains(field)
+                                || clan.ClanName.Contains(field)
+                                || ocupation.OcupationName.Contains(field)
+                                || jutsu.JutsuName.Contains(field)
+                                || village.VillageName.Contains(field)
+                                && character.Status == true
+                        select new CharacterDTO
+                        {
+                            IdCharacter = character.IdCharacter,
+                            FirstName = character.FirstName,
+                            Image = character.Image,
+                            RefImage = character.RefImage,
+                            Age = character.Age,
+                            NameClan = clan.ClanName!,
+                            NameVillage = village.VillageName!,
+                            NameOcupation = ocupation.OcupationName!,
+                            NameJutsu = jutsu.JutsuName!,
+                            Alive = status.Alive,
+                            Status = character.Status,
+                        };
+            return await query.ToListAsync();
         }
     }
 }

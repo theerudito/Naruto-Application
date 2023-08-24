@@ -31,7 +31,7 @@ namespace Naruto.Models.DTO
         public int? IdStatus { get; set; }
         [NotMapped]
         public bool Alive { get; set; }
-
+        [NotMapped]
         public bool Status { get; set; }
     }
 

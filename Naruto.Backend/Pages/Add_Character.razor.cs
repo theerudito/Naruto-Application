@@ -10,14 +10,12 @@ namespace Naruto.Backend.Pages
 {
     public partial class Add_Character
     {
-
         [Inject]
         private ICharacter Characters { get; set; } = null!;
         [Inject]
         private IClan Clans { get; set; } = null!;
         [Inject]
-        private NavigationManager NavigationManager { get; set; } = null!;
-        [Inject]
+
         private Cloudinary_Manager CloudinaryManager { get; set; } = null!;
         [Inject]
         private SweetAlertService Swal { get; set; } = null!;
@@ -150,12 +148,13 @@ namespace Naruto.Backend.Pages
             characters.IdJutsu = characters.IdJutsu;
             characters.IdVillage = characters.IdVillage;
             characters.IdOcupation = characters.IdOcupation;
+            characters.IdStatus = characters.IdStatus;
         }
         private async Task AddInfoAditiona()
         {
             if (ModalTitle.ToUpper() == typeModal.CLAN.ToString())
             {
-                await Clans._POST(new ClanDTO { ClanName = propertyModel, Image = "https://res.cloudinary.com/erudito/image/upload/v1692755904/clan/clanUzumaki.webp" });
+                await Clans._POST(new ClanDTO { ClanName = propertyModel, Image = "https://res.cloudinary.com/erudito/image/upload/v1692840384/clan/ClanUzumaki.webp" });
                 listClan = await Clans._GETS();
                 StateHasChanged();
                 ResetFieldsModal();

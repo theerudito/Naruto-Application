@@ -20,7 +20,7 @@ namespace Naruto.Service.Repositories
 
         public async Task<List<ClanDTO>> _GETS()
         {
-            var query = await _dbContext.Clan.ToListAsync();
+            var query = await _dbContext.Clan.Where(c => c.Status == true).ToListAsync();
 
             return query != null
             ? _mapper.Map<List<ClanDTO>>(query)
@@ -29,7 +29,7 @@ namespace Naruto.Service.Repositories
 
         public async Task<ClanDTO> _GET(int id)
         {
-            var query = await _dbContext.Clan.FirstOrDefaultAsync(x => x.IdClan == id);
+            var query = await _dbContext.Clan.Where(c => c.IdClan == id && c.Status == true).FirstOrDefaultAsync();
 
             return query != null
               ? _mapper.Map<ClanDTO>(query)
@@ -47,7 +47,6 @@ namespace Naruto.Service.Repositories
 
         public async Task<bool> _PUT(ClanDTO clan, int id)
         {
-
             try
             {
                 var query = await _dbContext.Clan.Where(c => c.IdClan == id).FirstOrDefaultAsync();
@@ -57,10 +56,9 @@ namespace Naruto.Service.Repositories
                     query.ClanName = clan.ClanName;
                     query.Image = clan.Image;
                     query.RefImage = clan.RefImage;
-                    _dbContext.Update(query);
-
+                    query.Status = true;
+                    // _dbContext.Update(query);
                     await _dbContext.SaveChangesAsync();
-
                     return true;
                 }
                 else
@@ -80,9 +78,8 @@ namespace Naruto.Service.Repositories
 
             if (query != null)
             {
-                _dbContext.Remove(query);
+                query.Status = false;
                 await _dbContext.SaveChangesAsync();
-
                 return true;
             }
             else

@@ -1,3 +1,4 @@
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Data\bin\Debug\net7.0\MyDatabase\Naruto.db
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Data\bin\Debug\net7.0\Naruto.Data.deps.json
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Data\bin\Debug\net7.0\Naruto.Data.runtimeconfig.json
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Data\bin\Debug\net7.0\Naruto.Data.dll
