@@ -37,7 +37,7 @@
                             <p class="card-text m-0">Jutsu: @item.NameJutsu</p>
                             <p class="card-text m-0">Aldea: @item.NameVillage</p>
                             <p class="card-text m-0">Occupation: @item.NameOcupation</p>
-                            <p class="card-text m-0">Status: @(item.Alive ? "Alive" : "Death")</p>
+                            <p class="card-text m-0">Status: @(item.Alive == true ? "Alive" : "Death")</p>
                         </div>
                     </div>
             }

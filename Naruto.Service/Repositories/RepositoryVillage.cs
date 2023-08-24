@@ -17,15 +17,16 @@ namespace Naruto.Service.Repositories
         }
         public async Task<List<VillagesDTO>> _GETS()
         {
-            var query = await _dbContext.Village.ToListAsync();
+            var query = await _dbContext.Village.Where(c => c.Status == true).ToListAsync();
 
             return _mapper.Map<List<VillagesDTO>>(query);
         }
-        public Task<VillagesDTO> _GET(int id)
+        public async Task<VillagesDTO> _GET(int id)
         {
-            throw new NotImplementedException();
-        }
+            var query = await _dbContext.Village.Where(c => c.Status == true && c.IdVillage == id).FirstOrDefaultAsync();
 
+            return _mapper.Map<VillagesDTO>(query);
+        }
         public async Task<VillagesDTO> _POST(VillagesDTO villages)
         {
             var newVillage = _mapper.Map<Villages>(villages);
@@ -35,15 +36,30 @@ namespace Naruto.Service.Repositories
             await _dbContext.SaveChangesAsync();
             return _mapper.Map<VillagesDTO>(newVillage);
         }
-
-        public Task<bool> _PUT(VillagesDTO villages, int id)
+        public async Task<bool> _PUT(VillagesDTO villages, int id)
         {
-            throw new NotImplementedException();
+            var query = await _dbContext.Village.Where(c => c.IdVillage == id).FirstOrDefaultAsync();
+
+            if (query != null)
+            {
+                query.VillageName = villages.VillageName;
+                query.Status = true;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
-
-        public Task<bool> _DELETE(int id)
+        public async Task<bool> _DELETE(int id)
         {
-            throw new NotImplementedException();
+            var query = await _dbContext.Village.Where(c => c.IdVillage == id).FirstOrDefaultAsync();
+            if (query != null)
+            {
+                query.Status = false;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
         }
     }
 }

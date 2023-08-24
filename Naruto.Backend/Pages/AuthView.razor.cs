@@ -52,7 +52,7 @@ namespace Naruto.Backend.Pages
         protected override async Task OnInitializedAsync()
         {
 
-            //   await myConfig.DefaultData();
+            await myConfig.DefaultData();
             await base.OnInitializedAsync();
             if (await LocalStorageData.GetLocalStorage() != null)
             {

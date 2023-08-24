@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MyDatabase\Naruto.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="MyDatabase\Naruto.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
@@ -17,10 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Naruto.Models\Naruto.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="MyDatabase\" />
   </ItemGroup>
 
 </Project>
