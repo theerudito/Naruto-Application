@@ -4681,11 +4681,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Service\\Naruto.Service.csproj",
+      "projectUniqueName": "c:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Service\\Naruto.Service.csproj",
       "projectName": "Naruto.Service",
-      "projectPath": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Service\\Naruto.Service.csproj",
+      "projectPath": "c:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Service\\Naruto.Service.csproj",
       "packagesPath": "C:\\Users\\ewine\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Service\\obj\\",
+      "outputPath": "c:\\Users\\ewine\\source\\repos\\Blazor\\Naruto\\Naruto.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

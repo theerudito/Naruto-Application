@@ -57,7 +57,8 @@ namespace Naruto.Backend.Pages
                     {
                         ClanName = clan.ClanName,
                         Image = _urlImage,
-                        RefImage = nameImage
+                        RefImage = nameImage,
+                        Status = true
                     };
 
                     await Clans._POST(newClan);
@@ -86,7 +87,8 @@ namespace Naruto.Backend.Pages
                         {
                             ClanName = clan.ClanName,
                             Image = _urlImage,
-                            RefImage = nameImage
+                            RefImage = nameImage,
+                            Status = true
                         };
 
                         await Clans._PUT(newClan, IdClan);
@@ -116,6 +118,7 @@ namespace Naruto.Backend.Pages
             IdClan = clan.IdClan;
             imagePreview = clan.Image;
             _refImage = imgRef;
+
         }
 
         private async Task DeleteClan(int id, string imgRef)

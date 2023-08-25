@@ -1,4 +1,3 @@
-C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\bin\Debug\net7.0\MyDatabase\Naruto.db
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\bin\Debug\net7.0\appsettings.json
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\bin\Debug\net7.0\Naruto.Backend.staticwebassets.runtime.json
@@ -84,3 +83,4 @@ C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\obj\Debug\net7.0\refint
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\obj\Debug\net7.0\Naruto.Backend.pdb
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\obj\Debug\net7.0\Naruto.Backend.genruntimeconfig.cache
 C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\obj\Debug\net7.0\ref\Naruto.Backend.dll
+C:\Users\ewine\source\repos\Blazor\Naruto\Naruto.Backend\bin\Debug\net7.0\MyDatabase\Naruto.db

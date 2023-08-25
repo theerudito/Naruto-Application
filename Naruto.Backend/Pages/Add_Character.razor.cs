@@ -154,28 +154,28 @@ namespace Naruto.Backend.Pages
         {
             if (ModalTitle.ToUpper() == typeModal.CLAN.ToString())
             {
-                await Clans._POST(new ClanDTO { ClanName = propertyModel, Image = "https://res.cloudinary.com/erudito/image/upload/v1692840384/clan/ClanUzumaki.webp" });
+                await Clans._POST(new ClanDTO { ClanName = propertyModel, Status = true, Image = "https://res.cloudinary.com/erudito/image/upload/v1692840384/clan/ClanUzumaki.webp" });
                 listClan = await Clans._GETS();
                 StateHasChanged();
                 ResetFieldsModal();
             }
             else if (ModalTitle.ToUpper() == typeModal.JUTSU.ToString())
             {
-                await Jutsus._POST(new JutsusDTO { JutsuName = propertyModel });
+                await Jutsus._POST(new JutsusDTO { JutsuName = propertyModel, Status = true });
                 listJutsu = await Jutsus._GETS();
                 StateHasChanged();
                 ResetFieldsModal();
             }
             else if (ModalTitle.ToUpper() == typeModal.VILLAGE.ToString())
             {
-                await Village._POST(new VillagesDTO { VillageName = propertyModel });
+                await Village._POST(new VillagesDTO { VillageName = propertyModel, Status = true });
                 listVillage = await Village._GETS();
                 StateHasChanged();
                 ResetFieldsModal();
             }
             else if (ModalTitle.ToUpper() == typeModal.OCUPATION.ToString())
             {
-                await Ocupation._POST(new OcupationDTO { OcupationName = propertyModel });
+                await Ocupation._POST(new OcupationDTO { OcupationName = propertyModel, Status = true });
                 listOcupation = await Ocupation._GETS();
                 StateHasChanged();
                 ResetFieldsModal();
@@ -195,6 +195,7 @@ namespace Naruto.Backend.Pages
                         IdClan = characters.IdClan,
                         Age = characters.Age,
                         Image = _urlImage,
+                        Status = true,
                         RefImage = nameImage,
                         IdJutsu = characters.IdJutsu,
                         IdVillage = characters.IdVillage,
@@ -228,6 +229,7 @@ namespace Naruto.Backend.Pages
                             Age = characters.Age,
                             Image = _urlImage,
                             RefImage = nameImage,
+                            Status = true,
                             IdJutsu = characters.IdJutsu,
                             IdVillage = characters.IdVillage,
                             IdOcupation = characters.IdOcupation,

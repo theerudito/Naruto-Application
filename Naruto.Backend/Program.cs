@@ -19,9 +19,11 @@ string baseDirectory = AppContext.BaseDirectory;
 string folder = "MyDatabase";
 string database = "Naruto.db";
 string databaseFilePath = Path.Combine(baseDirectory, folder, database);
+
 var connectionString = $"Data Source={databaseFilePath}";
 
-// Sqlite
+
+// // Sqlite
 builder.Services.AddDbContext<Application_ContextDB>(options => options.UseSqlite(connectionString));
 
 
